@@ -2,8 +2,18 @@ import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
-  const { loginWithPopup, loginWithRedirect, logout, user, isAuthenticated } =
-    useAuth0();
+  const {
+    loginWithPopup,
+    loginWithRedirect,
+    logout,
+    user,
+    isAuthenticated,
+    error,
+  } = useAuth0();
+
+  if (error) {
+    return <div>Something went wrong {error.message}</div>;
+  }
 
   return (
     <div className="App">
